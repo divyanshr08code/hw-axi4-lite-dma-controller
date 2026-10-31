@@ -23,6 +23,7 @@ The system consists of:
 
 High-level data flow:
 
+```text
 AXI4-Lite
    |
    v
@@ -41,6 +42,9 @@ DMA Controller
                  |
                  v
              Destination
+```
+
+See [docs/architecture.md](docs/architecture.md) for the full architecture.
 
 ## Features
 
@@ -73,6 +77,8 @@ DMA Controller
 | 0x14 | TRANSFER_COUNT | Number of transferred words |
 | 0x18 | ERROR | Error status |
 
+See [docs/register_map.md](docs/register_map.md) for field-level details.
+
 ## Verification
 
 The design is verified using:
@@ -83,6 +89,24 @@ The design is verified using:
 - SystemVerilog Assertions
 
 The basic verification scenario transfers four 32-bit words from a source region to a destination region and checks that all destination words match the source data.
+
+This verification is directed and intentionally focused. It does not claim exhaustive protocol or functional coverage; see [docs/verification.md](docs/verification.md) for its scope and possible extensions.
+
+## Simulation Results
+
+Testbench console output showing all four destination words passing:
+
+![DMA verification passed](results/dma_verification_passed_2.png.png)
+
+Waveform of the AXI write channel transferring the four words:
+
+![AXI write waveform](results/waveform.png.png)
+
+The start of the test log is in [results/dma_verification_passed.png.png](results/dma_verification_passed.png.png). Synthesis and timing results are not included yet.
+
+## Design Notes
+
+[docs/challenges.md](docs/challenges.md) describes the main design and debugging challenges.
 
 ## Tools
 
@@ -100,5 +124,11 @@ axi4-lite-dma-controller/
 ├── sva/
 ├── docs/
 ├── results/
+├── LICENSE
 ├── README.md
 └── .gitignore
+```
+
+## License
+
+Released under the [MIT License](LICENSE).
