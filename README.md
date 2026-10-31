@@ -118,7 +118,7 @@ The start of the test log is in [results/dma_verification_passed.png.png](result
 ## Project Structure
 
 ```text
-axi4-lite-dma-controller/
+hw-axi4-lite-dma-controller/
 ├── rtl/
 ├── tb/
 ├── sva/
